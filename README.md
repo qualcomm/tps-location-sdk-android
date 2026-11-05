@@ -226,6 +226,27 @@ If you want to write the log file to external storage, make sure to obtain the `
 
 ## Changelog
 
+### 5.20.0
+
+* ![feat] ![all] Additional usage metrics support
+* ![impr] ![all] Observability metrics support in background mode
+* ![impr] ![all] Improved TTFF for Wi-Fi RTT positioning
+
+### 5.19
+
+* ![feat] ![provider] Additional server-side support for emergency-only mode
+
+### 5.18
+
+* ![impr] ![all] Improved venue and floor detection in surveyed sites
+* ![feat] ![provider] Emergency-only mode support
+* ![feat] ![provider] Periodic token-based registration support
+
+### 5.17
+
+* ![feat] ![all] Observability metrics support
+* ![fix] ![all] Fixed an issue in floor detection
+
 ### 5.16.9
 
 * ![impr] ![all] Minor improvement in cell positioning accuracy
@@ -253,6 +274,10 @@ If you want to write the log file to external storage, make sure to obtain the `
 * ![depr] ![all] Removed legacy XPS v1 location engine
 * ![depr] ![sdk] Deprecated Tune Location API
 * ![depr] ![sdk] Deprecated Certified Location API
+
+### 5.14.14
+
+* ![fix] ![all] Fixed a rare crash when scanning multiple cells
 
 ### 5.14.13
 
