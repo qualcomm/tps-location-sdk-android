@@ -89,7 +89,7 @@ import com.skyhookwireless.wps;
 
 ### Initialize API
 
-Create an instance of [XPS](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/XPS.html) (or [WPS](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html)) API object in the `onCreate` method of your activity or service:
+Create an instance of [XPS](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/XPS.html) (or [WPS](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html)) API object in the `onCreate` method of your activity or service:
 ```java
 private XPS xps;
 ...
@@ -100,12 +100,12 @@ public void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-Call [setKey()](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#setKey-java.lang.String-) to initialize the API with your key:
+Call [setKey()](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#setKey(java.lang.String)) to initialize the API with your key:
 ```java
 xps.setKey("YOUR KEY");
 ```
 
-If you use a key and a SKU label for authentication with TPS, call [setAuthentication()](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#setAuthentication-java.lang.String-java.lang.String-) instead as shown below:
+If you use a key and a SKU label for authentication with TPS, call [setAuthentication()](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#setAuthentication(java.lang.String,java.lang.String)) instead as shown below:
 ```java
 xps.setAuthentication("YOUR KEY", "YOUR SKU");
 ```
@@ -114,7 +114,7 @@ xps.setAuthentication("YOUR KEY", "YOUR SKU");
 
 If you are planning to request location determination frequently, it is recommended to enable the tiling mode in the SDK. It downloads, from the server, a small portion of the database so the device can automonously determine its location, without further need to contact the server.
 
-This mode is activated by calling [setTiling()](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#setTiling-java.lang.String-long-long-com.skyhookwireless.wps.TilingListener-):
+This mode is activated by calling [setTiling()](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#setTiling(java.lang.String,long,long,com.skyhookwireless.wps.TilingListener)):
 ```java
 File tileDir = new File(getFilesDir(), "tiles");
 
@@ -139,9 +139,9 @@ In order to determine location in background on **Android 10** or higher, make s
 
 ### One-time location request
 
-The one-time location request provides a method to make a single request for location: [getLocation()](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#getLocation-com.skyhookwireless.wps.WPSAuthentication-com.skyhookwireless.wps.WPSStreetAddressLookup-boolean-com.skyhookwireless.wps.WPSLocationCallback-).
+The one-time location request provides a method to make a single request for location: [getLocation()](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#getLocation(com.skyhookwireless.wps.WPSAuthentication,com.skyhookwireless.wps.WPSStreetAddressLookup,boolean,com.skyhookwireless.wps.WPSLocationCallback)).
 
-The request will call the callback method. The [handleWPSLocation()](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPSLocationCallback.html#handleWPSLocation-com.skyhookwireless.wps.WPSLocation-) method is passed the [WPSLocation](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPSLocation.html) object which will contain the location information.
+The request will call the callback method. The [handleWPSLocation()](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPSLocationCallback.html#handleWPSLocation(com.skyhookwireless.wps.WPSLocation)) method is passed the [WPSLocation](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPSLocation.html) object which will contain the location information.
 
 A one-time location request call from your application would look like this:
 ```java
@@ -171,9 +171,9 @@ You can also request a street address or time zone lookup with this method.
 
 ### Periodic location
 
-A request for periodic location updates can be made using the following method: [getPeriodicLocation()](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#getPeriodicLocation-com.skyhookwireless.wps.WPSAuthentication-com.skyhookwireless.wps.WPSStreetAddressLookup-boolean-long-int-com.skyhookwireless.wps.WPSPeriodicLocationCallback-).
+A request for periodic location updates can be made using the following method: [getPeriodicLocation()](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#getPeriodicLocation(com.skyhookwireless.wps.WPSAuthentication,com.skyhookwireless.wps.WPSStreetAddressLookup,boolean,long,int,com.skyhookwireless.wps.WPSPeriodicLocationCallback)).
 
-This method will continue running for the specified number of iterations or until the user stops the request by returning [WPS_STOP](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPSContinuation.html#WPS_STOP) from the callback.
+This method will continue running for the specified number of iterations or until the user stops the request by returning [WPS_STOP](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPSContinuation.html#WPS_STOP) from the callback.
 
 It is highly recommended to enable [tiling mode](#enable-tiling-mode) with this location method to eliminate frequent network requests to the server. Note that if street address or time zone lookup is requested, this call will **not use the tiling cache** to determine locations.
 
@@ -181,7 +181,7 @@ Starting with **Android Pie** the recommended minimum period for location update
 
 ### Abort
 
-When your app is terminating, it is recommended to cancel any ongoing operations by invoking the [abort()](https://quic.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#abort--) method:
+When your app is terminating, it is recommended to cancel any ongoing operations by invoking the [abort()](https://qualcomm.github.io/tps-location-sdk-android/javadoc/com/skyhookwireless/wps/WPS.html#abort()) method:
 ```java
 public void onDestroy() {
     super.onDestroy();
@@ -192,7 +192,7 @@ public void onDestroy() {
 
 ## API reference
 
-Check the [full API reference](https://quic.github.io/tps-location-sdk-android/javadoc) for more information on APIs that are exposed by the SDK.
+Check the [full API reference](https://qualcomm.github.io/tps-location-sdk-android/javadoc) for more information on APIs that are exposed by the SDK.
 
 ## Logging
 
